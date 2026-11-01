@@ -1,0 +1,56 @@
+{
+  "manifest_version": 3,
+  "name": "PokéSurvivor AutoBot",
+  "version": "2.0.9",
+  "description": "Bot tự động chơi PokéSurvivor tích hợp bản quyền ECDSA và cập nhật tự động.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://pokesurvivor.com/*",
+        "https://www.pokesurvivor.com/*"
+      ],
+      "js": [
+        "hook.js"
+      ],
+      "run_at": "document_start",
+      "world": "MAIN"
+    },
+    {
+      "matches": [
+        "https://pokesurvivor.com/*",
+        "https://www.pokesurvivor.com/*",
+        "https://pokesurvivor.doofcraft.com/*"
+      ],
+      "js": [
+        "loader.js"
+      ],
+      "run_at": "document_idle",
+      "world": "MAIN"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "bot.local.js"
+      ],
+      "matches": [
+        "https://pokesurvivor.com/*",
+        "https://www.pokesurvivor.com/*",
+        "https://pokesurvivor.doofcraft.com/*"
+      ]
+    }
+  ]
+}
+

@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "PokéSurvivor AutoBot",
-  "version": "2.0.9",
-  "description": "Bot tự động chơi PokéSurvivor tích hợp bản quyền ECDSA và cập nhật tự động.",
+  "version": "1.0.0",
+  "description": "Bot tự động chơi PokéSurvivor trên pokesurvivor.com & pokesurvivor.doofcraft.com.",
   "icons": {
     "16": "icons/icon16.png",
     "32": "icons/icon32.png",
@@ -19,7 +19,8 @@
     {
       "matches": [
         "https://pokesurvivor.com/*",
-        "https://www.pokesurvivor.com/*"
+        "https://www.pokesurvivor.com/*",
+        "https://pokesurvivor.doofcraft.com/*"
       ],
       "js": [
         "hook.js"
@@ -53,4 +54,3 @@
     }
   ]
 }
-

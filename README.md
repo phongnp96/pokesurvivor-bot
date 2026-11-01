@@ -1,16 +1,19 @@
 # 🎮 PokéSurvivor AutoBot — WILDCORE PRO
-> **Bot tự động chơi game PokéSurvivor (pokesurvivor.com & doofcraft.com)**  
+> **Bot tự động chơi game PokéSurvivor (hỗ trợ cả pokesurvivor.com và pokesurvivor.doofcraft.com)**  
 > Giao diện Pixel RPG Field Kit cao cấp, tối ưu 100% cho cả Máy tính (PC) & Điện thoại (Mobile). Tự động cập nhật ngầm qua GitHub.
 
-[![Version](https://img.shields.io/badge/Version-2.0.9-gold.svg?style=for-the-badge&logo=pokemon)](https://github.com/phongnp96/pokesurvivor-bot)
+[![Version](https://img.shields.io/badge/Version-1.0.0-gold.svg?style=for-the-badge&logo=pokemon)](https://github.com/phongnp96/pokesurvivor-bot)
 [![License](https://img.shields.io/badge/License-ECDSA%20Protected-brightgreen.svg?style=for-the-badge)](https://github.com/phongnp96/pokesurvivor-bot)
 [![Platform](https://img.shields.io/badge/Platform-Chrome%20%7C%20Edge%20%7C%20Kiwi%20%7C%20Mobile-blue.svg?style=for-the-badge)](https://github.com/phongnp96/pokesurvivor-bot)
 [![Update](https://img.shields.io/badge/Auto%20Update-Enabled-success.svg?style=for-the-badge)](https://github.com/phongnp96/pokesurvivor-bot)
 
 ---
 
-## 🌟 Điểm nổi bật của phiên bản WILDCORE PRO
+## 🌟 Điểm nổi bật của phiên bản WILDCORE PRO v1.0.0
 
+* 🌐 **Hỗ trợ đầy đủ 2 máy chủ game**:
+  * Server chính: **`https://pokesurvivor.com`**
+  * Server Doofcraft: **`https://pokesurvivor.doofcraft.com`**
 * 🕹️ **Bộ điều chỉnh số ván thông minh (Touch Stepper & Quick Preset Chips)**:
   * Nút `[ − ]` và `[ + ]` to bản (44px), chạm cực nhạy, không lo bấm nhầm trên màn hình cảm ứng.
   * Dãy thẻ chọn nhanh 1-chạm: `[ ∞ Vô hạn ]`, `[ 1 ván ]`, `[ 5 ván ]`, `[ 10 ván ]`, `[ 25 ván ]`, `[ 50 ván ]`. Chỉ cần chạm 1 lần là chọn ngay, không cần gõ bàn phím ảo.
@@ -44,7 +47,7 @@
    * Microsoft Edge: `edge://extensions`
 4. Bật công tắc **Developer mode (Chế độ dành cho nhà phát triển)** ở góc trên bên phải.
 5. Nhấn nút **Load unpacked (Tải tiện ích đã giải nén)** ➔ Chọn thư mục `extension`.
-6. Truy cập vào game [pokesurvivor.com](https://pokesurvivor.com) ➔ Menu bot sẽ tự động xuất hiện!
+6. Truy cập vào game [pokesurvivor.com](https://pokesurvivor.com) hoặc [pokesurvivor.doofcraft.com](https://pokesurvivor.doofcraft.com) ➔ Menu bot sẽ tự động xuất hiện!
 
 ---
 
@@ -54,7 +57,7 @@
 3. Mở Kiwi Browser ➔ Nhấn vào dấu **3 chấm `⋮`** ở góc trên bên phải ➔ Chọn **Tiện ích mở rộng (Extensions)**.
 4. Bật **Chế độ dành cho nhà phát triển (Developer mode)**.
 5. Nhấn nút **`+ (from .zip / .crx / dir)`** ➔ Tìm chọn thư mục `extension` (hoặc file zip của extension).
-6. Mở trang web [pokesurvivor.com](https://pokesurvivor.com) và xoay ngang màn hình để trải nghiệm giao diện cảm ứng tối ưu.
+6. Mở trang web [pokesurvivor.com](https://pokesurvivor.com) hoặc [pokesurvivor.doofcraft.com](https://pokesurvivor.doofcraft.com) và xoay ngang màn hình để trải nghiệm giao diện cảm ứng tối ưu.
 
 ---
 

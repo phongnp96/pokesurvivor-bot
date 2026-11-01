@@ -93,9 +93,53 @@
     return null;
   };
 
+  // Chế độ nạp mã:
+  // - Local Development (DEV): Luôn ưu tiên chạy bot.local.js trong extension để người dùng và tester
+  //   chạy ngay mã mới trong file ZIP mà không bị bản cũ trên GitHub main ghi đè.
+  // - Remote GitHub (PROD): Tự động kiểm tra và cập nhật mã mới từ GitHub main khi phát hành chính thức.
+  const IS_DEV_BUILD = true; // Mặc định bật true cho bản ZIP/thử nghiệm extension
+  const isDevMode = (() => {
+    try {
+      const mode = localStorage.getItem('psbot.dev');
+      if (mode === '1' || mode === 'local') return true;
+      if (mode === '0' || mode === 'remote') return false;
+      return IS_DEV_BUILD;
+    } catch(e) {
+      return IS_DEV_BUILD;
+    }
+  })();
+
+  const loadLocalCode = async () => {
+    try {
+      if (typeof chrome !== 'undefined' && chrome.runtime && chrome.runtime.getURL) {
+        const localUrl = chrome.runtime.getURL('bot.local.js');
+        const res = await fetch(localUrl);
+        if (res.ok) {
+          const localCode = await res.text();
+          if (localCode && localCode.length > 5000) return localCode;
+        }
+      }
+    } catch(e) {
+      console.warn('[PSBot Loader] Lỗi đọc bot.local.js:', e);
+    }
+    return null;
+  };
+
   // Khởi động bot thông minh
   const init = async () => {
-    // 1. Thử tải bản mới nhất từ GitHub
+    // 1. Chế độ Local Development / Testing: nạp ngay file cục bộ trong ZIP
+    if (isDevMode) {
+      const localCode = await loadLocalCode();
+      if (localCode) {
+        runBot(localCode);
+        console.log('⚡ [PSBot] Chế độ DEV: Đang chạy bot.local.js (Local Bundle trong ZIP)');
+        showToast('⚡ [AutoBot DEV] Đang chạy bản Local ZIP (bot.local.js)', true);
+        return;
+      }
+      console.warn('[PSBot] Không tìm thấy bot.local.js, chuyển sang kiểm tra online/cache.');
+    }
+
+    // 2. Chế độ Remote: Thử tải bản mới nhất từ GitHub
     let latestCode = await fetchWithTimeout(REMOTE_URL, 2000);
     if (!latestCode) {
       // Dự phòng qua CDN jsDelivr nếu GitHub raw bị chặn
@@ -114,7 +158,7 @@
       return;
     }
 
-    // 2. Nếu mạng lag / offline: chạy từ cache
+    // 3. Nếu mạng lag / offline: chạy từ cache
     if (cachedCode) {
       runBot(cachedCode);
       console.log('🛡️ [PSBot] Đang chạy bản từ bộ nhớ đệm (Offline Cache)');
@@ -122,19 +166,15 @@
       return;
     }
 
-    // 3. Nếu chưa có cache (lần đầu cài đặt khi không có mạng): đọc file cục bộ bot.local.js
-    try {
-      const localUrl = chrome.runtime.getURL('bot.local.js');
-      const res = await fetch(localUrl);
-      if (res.ok) {
-        const localCode = await res.text();
-        runBot(localCode);
-        console.log('📦 [PSBot] Đang chạy bản cài đặt gốc (Local Fallback)');
-      }
-    } catch(e) {
-      console.warn('[PSBot] Không thể tải local fallback:', e);
+    // 4. Nếu chưa có cache: đọc file cục bộ bot.local.js
+    const fallbackCode = await loadLocalCode();
+    if (fallbackCode) {
+      runBot(fallbackCode);
+      console.log('📦 [PSBot] Đang chạy bản cài đặt gốc (Local Fallback)');
+      showToast('📦 [AutoBot v1.0.0] Đang chạy bản cài đặt gốc (Local Fallback)', false);
     }
   };
 
   init();
 })();
+

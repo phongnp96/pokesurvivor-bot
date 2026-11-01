@@ -34,3 +34,4 @@
 - Thêm 13 bài test safety/strategy/integration và 2 case đường dài/blacklist
   pickup, nâng tổng thành 27.
 - Thêm sơ đồ luồng nghiệp vụ và prompt giao việc chi tiết cho Antigravity.
+

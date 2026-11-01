@@ -47,6 +47,10 @@ Hệ thống kích hoạt bảo mật theo Mã máy (Machine ID) độc quyền:
   * **Ưu tiên Thẻ nâng cấp (Level Up)** & **Ưu tiên Đồ cầm (Held Items)**: Tối ưu sức mạnh tối đa trong từng trận.
   * **Tự động dùng chiêu (phím E)** liên tục không trễ nhịp.
   * **Ưu tiên nhặt rương**: Luôn ưu tiên mở rương vé tím (Tickets), gem, candy.
+* 🧠 **Tùy chọn Động cơ điều hướng V1 / V2 (Navigation Engine A/B Testing)**:
+  * **V1 (Stable - Mặc định)**: Động cơ ổn định hiện có, tích hợp đầy đủ tính năng né quái, né hazard, tìm đường A* và thoát kẹt.
+  * **V2 (Experimental - WILDCORE AI 2.1)**: Động cơ AI tự động hóa thử nghiệm thế hệ mới với A* chia đoạn cục bộ, thuật toán phá vây quái (Swarm Breaching) quét 24 hướng, cơ chế giữ hướng thoát hiểm, danh sách đen mục tiêu gây kẹt và bảo vệ CPU (Circuit Breaker).
+  * **Chuyển đổi 1-chạm & Fallback an toàn**: Vào tab `BUILD` (02 / BATTLE LAB), chọn mục `ĐỘNG CƠ DI CHUYỂN` để đổi giữa V1 và V2. Khi cần quay về bản ổn định, chỉ cần chọn lại `V1`.
 * ◐ **Chế độ Mờ ẩn thân (Stealth Mode)**:
   * Nhấn biểu tượng `◐` trên góc phải để đưa menu về độ mờ 55%, vừa nhìn rõ toàn bộ game phía sau vừa dễ chịu cho mắt khi cày cuốc ban đêm.
   * Tự động làm mờ khi không thao tác sau 25 giây, rê chuột/chạm vào là sáng rõ 100%.
@@ -128,6 +132,22 @@ Trên các thiết bị của Apple (iPhone / iPad), bạn có 2 cách cực k�
 | **`▶`** *(trên thanh thu gọn)* | Chạy hoặc dừng bot tức thì khi đang thu gọn menu |
 | **Nháy đúp chuột vào thanh tiêu đề** | Thu gọn / Mở rộng menu nhanh |
 | **Kéo thanh tiêu đề** | Di chuyển menu đến vị trí bất kỳ trên màn hình |
+
+---
+
+## 📊 Bảng Xác Minh Khả Năng API Hai Máy Chủ Game
+
+| Khả năng | Máy chủ chính (`pokesurvivor.com`) | Máy chủ Doofcraft (`pokesurvivor.doofcraft.com`) | Trạng thái xác minh |
+| :--- | :--- | :--- | :---: |
+| **Player State** | `window.G.Game.player` (`x, y, r, hp, maxHp, spd`) | Trích xuất qua Canvas/OCR (`meW.x, meW.y, r=10, hp`) | ✅ Verified |
+| **Collision (Va chạm)** | `window.G.World.isFree(x, y, r, allowLiquid)` | Quét Palette ImageData 16x16 tile (`wallAt(x, y)`) | ✅ Verified |
+| **Enemy Feed (Quái)** | `window.G.EnemyMgr.all()` (`x, y, r, vx, vy, dmg, boss`) | Quét Canvas Sprite Render List (`enemyRe`) | ✅ Verified |
+| **Hazard Feed (Vùng nguy hiểm)** | `window.G.Hazards.all` (`zone, circle, line`) | Nhận diện Canvas Tags (`fill:#ff2445`, polygon/line) | ✅ Verified |
+| **Projectile Feed (Đạn quái)** | `window.G.Projectiles.all()` (`friendly, x, y, vx, vy`) | Nhận diện đạn cơ bản (`rgba(255,60,80,0.35)`), đạn phức tạp: `unverified` | ⚠️ Partially Verified |
+| **Pickup Feed (Vật phẩm/XP)** | `window.G.Orbs.all()` (`xp, coin, chest, ticket, magnet`) | Nhận diện Canvas Tag (`fill:#7fe0ff`, `fill:#ffd95e`) | ✅ Verified |
+| **Reward Modal (Thẻ lên cấp)** | `window.G.RunUI` / DOM `#lvl-cards` (`chooseCard`) | DOM modal `button.ps-card`, `reroll` | ✅ Verified |
+| **Manual Input Override** | Hook `window.G.Input.axis()` nhường người chơi ngay frame đầu | Event listener bàn phím (WASD / Mũi tên) nhường ngay | ✅ Verified |
+| **Game State Machine** | `window.G.Game.state` (`playing, levelup, choice, gameover`) | DOM modal / URL / Menu Solo-mode detection | ✅ Verified |
 
 ---
 

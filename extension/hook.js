@@ -4,6 +4,19 @@
   'use strict';
   if (window.__PSBOT_HOOK_INSTALLED) return;
   window.__PSBOT_HOOK_INSTALLED = true;
+  // 0. Auto-set willReadFrequently on all 2D canvases to eliminate Chrome warnings
+  try {
+    const _origGetContext = HTMLCanvasElement.prototype.getContext;
+    HTMLCanvasElement.prototype.getContext = function(type, attributes) {
+      if (type === '2d') {
+        attributes = Object.assign({}, attributes);
+        if (attributes.willReadFrequently === undefined) {
+          attributes.willReadFrequently = true;
+        }
+      }
+      return _origGetContext.call(this, type, attributes);
+    };
+  } catch (e) {}
 
   // 1. Hook Object.create(null) để bắt _0x5b97bb ngay tại byte 1056 của app.min.js
   const origCreate = Object.create;

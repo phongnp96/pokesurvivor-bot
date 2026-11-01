@@ -57,13 +57,14 @@ const _0x2ccb31=_0x2e48;function _0x2e48(_0x3b0fd3,_0x567a16){_0x3b0fd3=_0x3b0fd
     return!!_c.querySelector('button.ps-card, [data-testid^="option-"], .ps-card, div.option, button[data-testid^="choice-"]');
   },
   'runOver'(){
-    if(document.querySelector('[data-testid="results"]')||
-       document.querySelector('[data-testid="game-exit"]')||
-       document.querySelector('.ps-results')){
+    if(_0x3a0019('[data-testid="results"]')||
+       _0x3a0019('[data-testid="game-exit"]')||
+       _0x3a0019('.ps-results')){
       return true;
     }
+    if(_0x3a0019('[data-testid="solo-start"]')||_0x3a0019('[data-testid="menu-solo"]')||_0x3a0019('[data-testid="quick-solo"]'))return false;
     const _leafs=PSBotList(document.querySelectorAll('h1, h2, h3, .notice, .text, div:not(:has(*)), p, span'))
-      .filter(_el=>!(_el.closest&&_el.closest('[data-psbot-ui]'))&&_0x49a335['visible'](_el));
+      .filter(_el=>!(_el.closest&&_el.closest('[data-psbot-ui],[data-psbot-dock]'))&&_0x49a335['visible'](_el));
     return _leafs.some(_el=>/^(you fell|run over|game over|has caído|caíste|run stats|stage cleared!?|victory!?|thành công!?|chiến thắng!?|hoàn thành!?|vượt ải!?|results|kết quả)$/i.test((_el.innerText||_el.textContent||'').trim())&&!_0x3a5516());
   },
   'farmItems':_0xfb0d52,
@@ -117,19 +118,15 @@ const _0x2ccb31=_0x2e48;function _0x2e48(_0x3b0fd3,_0x567a16){_0x3b0fd3=_0x3b0fd
       return _0x16466c;
     }
 
-    // Results screen: Back / Exit button
-    const _resBox=document.querySelector('[data-testid="results"]')||document.querySelector('.ps-results')||document.querySelector('.scr-results');
+    // Results screen: Back / Exit button (chỉ kích hoạt khi màn hình kết quả hoặc game-exit đang hiển thị)
+    const _resBox=_0x3a0019('[data-testid="results"]')||_0x3a0019('.ps-results')||_0x3a0019('.scr-results');
     const _exitBtn=_0x3a0019(_0x9ca07b(0x82))||
-                   document.querySelector(_0x9ca07b(0x82))||
-                   _0x3a0019('[data-testid="back"]')||
-                   document.querySelector('[data-testid="back"]')||
-                   document.querySelector('button.btn-back, button.back, button.ps-btn-back')||
                    (_resBox&&(_resBox.querySelector('button.btn-back, button.back, [data-testid="game-exit"], [data-testid="back"]')||_resBox.querySelector('button')));
     if(_exitBtn&&_0x49a335['visible'](_exitBtn))return _exitBtn;
 
-    const _isOver=_resBox||(typeof this['runOver']==='function'&&this['runOver']());
-    if(_isOver){
-      const _backBtnInList=_0x253079.find(_b=>/^(back|quay lại|thoát|leave|exit|menu|về menu|tiếp tục|chơi lại|play again|retry|restart)$/i.test((_b.innerText||_b.textContent||'').trim()));
+    const _isOver=!!(_resBox||(typeof this['runOver']==='function'&&this['runOver']()));
+    if(_isOver&&!_0x3a0019('[data-testid="solo-start"]')){
+      const _backBtnInList=_0x253079.find(_b=>/^(back to menu|back|quay lại|thoát|leave|exit|menu|về menu|tiếp tục|chơi lại|play again|retry|restart)$/i.test((_b.innerText||_b.textContent||'').trim()));
       if(_backBtnInList)return _backBtnInList;
     }
 
@@ -478,9 +475,9 @@ function _0x12d7(_0x3a9445,_0x4b85e7){_0x3a9445=_0x3a9445-0x142;const _0x44d6b7=
   const _0x4f9762=_0x46e89f['pilot'];
   const _0x3397c4=!!((_0x4f9762&&typeof _0x4f9762['runOver']==='function'&&_0x4f9762['runOver']())||
                      (_0x46e89f&&typeof _0x46e89f['runOver']==='function'&&_0x46e89f['runOver']())||
-                     document.querySelector('[data-testid="results"]')||
-                     document.querySelector('[data-testid="game-exit"]')||
-                     document.querySelector('.ps-results')||
+                     _0x277909(document.querySelector('[data-testid="results"]'))||
+                     _0x277909(document.querySelector('[data-testid="game-exit"]'))||
+                     _0x277909(document.querySelector('.ps-results'))||
                      _0x32e045['some'](_0x2ab309=>/you fell|run over|game over|has caído|caíste/i[_0x47888d(0x328)](_0x2ab309[_0x47888d(0x4ef)]||'')));
   if(!_0x3397c4&&_0x46e89f[_0x47888d(0x14a)]())return;
   if(!_0x3397c4&&_0x32e045[_0x47888d(0x453)](_0x7f42e3=>/only hold one|An item!|Bond!|to bond/i[_0x47888d(0x328)](_0x7f42e3[_0x47888d(0x4ef)]||'')))return;
@@ -519,9 +516,9 @@ function _0x12d7(_0x3a9445,_0x4b85e7){_0x3a9445=_0x3a9445-0x142;const _0x44d6b7=
   let _0x232ae7=_0x4f9762&&_0x4f9762[_0x47888d(0x306)]()||_0x46e89f[_0x47888d(0x306)](_0x1ec082);
   if(!_0x232ae7&&_0x3397c4){
     _0x232ae7=document.querySelector('[data-testid="game-exit"]')||
-              document.querySelector('[data-testid="back"]')||
+              document.querySelector('[data-testid="results"] button, .ps-results button')||
               document.querySelector('button.btn-back, button.back, button.ps-btn-back')||
-              document.querySelector('[data-testid="results"] button, .ps-results button');
+              (!document.querySelector('[data-testid="solo-start"]')&&document.querySelector('[data-testid="back"]'));
   }
   if(!_0x232ae7&&_0xb4c1f2){
     _0x232ae7=document.querySelector('[data-testid="solo-start"]')||

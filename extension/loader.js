@@ -10,6 +10,39 @@
   const CACHE_KEY = 'psbot_wildcore_cached_bundle';
   const CACHE_TIME_KEY = 'psbot_wildcore_cache_time';
 
+  // Hiển thị thông báo nhỏ gọn khi cập nhật thành công
+  const showToast = (msg, isSuccess = true) => {
+    try {
+      const toast = document.createElement('div');
+      toast.style.cssText = [
+        'position: fixed',
+        'bottom: 16px',
+        'right: 16px',
+        'z-index: 9999999',
+        isSuccess ? 'background: #152923' : 'background: #2a2215',
+        isSuccess ? 'color: #8de2a1' : 'color: #ffde85',
+        isSuccess ? 'border: 1px solid #3d7052' : 'border: 1px solid #70582d',
+        isSuccess ? 'border-left: 4px solid #8de2a1' : 'border-left: 4px solid #ffde85',
+        'padding: 8px 14px',
+        'font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+        'font-size: 12px',
+        'font-weight: 700',
+        'border-radius: 3px',
+        'box-shadow: 0 4px 16px rgba(0,0,0,0.6)',
+        'pointer-events: none',
+        'transition: opacity 0.4s ease, transform 0.4s ease',
+        'transform: translateY(0)'
+      ].join(' !important;') + ' !important;';
+      toast.textContent = msg;
+      (document.body || document.documentElement).appendChild(toast);
+      setTimeout(() => {
+        toast.style.setProperty('opacity', '0', 'important');
+        toast.style.setProperty('transform', 'translateY(8px)', 'important');
+        setTimeout(() => toast.remove(), 400);
+      }, 3500);
+    } catch(e) {}
+  };
+
   // Thực thi mã nguồn bot an toàn vào window context của trang game
   const runBot = (code) => {
     if (!code || window.__PSBOT_RUNNING) return;
@@ -26,7 +59,7 @@
         window.__PSBOT_RUNNING = true;
         return true;
       } catch (err) {
-        console.error('[PSBot Loader] Không thể thực thi bot code:', err);
+        console.error('[PSBot Loader] Lỗi thực thi bot code:', err);
         return false;
       }
     }
@@ -76,7 +109,8 @@
         localStorage.setItem(CACHE_TIME_KEY, String(Date.now()));
       } catch(e) {}
       runBot(latestCode);
-      console.log('⚡ [PSBot] Đã nạp phiên bản mới nhất từ GitHub (phongnp96/pokesurvivor-bot)');
+      console.log('⚡ [PSBot] Đã tự động cập nhật bản mới nhất từ GitHub (phongnp96/pokesurvivor-bot)');
+      showToast('⚡ [AutoBot v1.0.0] Đã tự động cập nhật bản mới nhất từ GitHub!', true);
       return;
     }
 
@@ -84,10 +118,11 @@
     if (cachedCode) {
       runBot(cachedCode);
       console.log('🛡️ [PSBot] Đang chạy bản từ bộ nhớ đệm (Offline Cache)');
+      showToast('🛡️ [AutoBot v1.0.0] Đang chạy bản bộ nhớ đệm (Offline Cache)', false);
       return;
     }
 
-    // 3. Nếu chưa có cache (lần đầu cài đặt khi không có mạng): thử đọc file cục bộ bot.local.js
+    // 3. Nếu chưa có cache (lần đầu cài đặt khi không có mạng): đọc file cục bộ bot.local.js
     try {
       const localUrl = chrome.runtime.getURL('bot.local.js');
       const res = await fetch(localUrl);
@@ -103,4 +138,3 @@
 
   init();
 })();
-

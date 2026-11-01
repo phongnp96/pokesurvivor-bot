@@ -35,14 +35,16 @@
         "https://pokesurvivor.doofcraft.com/*"
       ],
       "js": [
-        "loader.js"
+        "bot.js"
       ],
-      "run_at": "document_idle"
+      "run_at": "document_idle",
+      "world": "MAIN"
     }
   ],
   "web_accessible_resources": [
     {
       "resources": [
+        "bot.js",
         "bot.local.js"
       ],
       "matches": [

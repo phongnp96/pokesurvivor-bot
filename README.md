@@ -4,6 +4,7 @@
 
 [![Version](https://img.shields.io/badge/Version-1.0.0-gold.svg?style=for-the-badge&logo=pokemon)](https://github.com/phongnp96/pokesurvivor-bot)
 [![License](https://img.shields.io/badge/License-ECDSA%20Protected-brightgreen.svg?style=for-the-badge)](https://github.com/phongnp96/pokesurvivor-bot)
+[![Facebook](https://img.shields.io/badge/Facebook-Nguy%E1%BB%85n%20Thanh%20Phong-1877f2.svg?style=for-the-badge&logo=facebook)](https://www.facebook.com/nguyen.thanh.phong.786817)
 [![Zalo](https://img.shields.io/badge/Zalo-0366.079.769-0068ff.svg?style=for-the-badge)](https://zalo.me/0366079769)
 [![Platform](https://img.shields.io/badge/Platform-PC%20%7C%20Android%20%7C%20iOS%20%28iPhone%2FiPad%29-blue.svg?style=for-the-badge)](https://github.com/phongnp96/pokesurvivor-bot)
 [![Auto Update](https://img.shields.io/badge/Auto%20Update-Enabled-success.svg?style=for-the-badge)](https://github.com/phongnp96/pokesurvivor-bot)
@@ -21,9 +22,10 @@ Hệ thống kích hoạt bảo mật theo Mã máy (Machine ID) độc quyền:
 | 🛡️ **Gói 3 Tháng** | **70.000đ** | Dành cho người chơi leo rank lâu dài |
 | 👑 **Gói VĨNH VIỄN** | **150.000đ** | **VIP Trọn Đời**: Dùng mãi mãi, nhận mọi bản cập nhật mới không giới hạn |
 
-👉 **Liên hệ mua Key kích hoạt ngay qua Zalo:**  
+👉 **Liên hệ mua Key kích hoạt ngay qua Zalo hoặc Facebook:**  
 [![Liên hệ Zalo](https://img.shields.io/badge/Chat%20Zalo%20Mua%20Key-0366.079.769-0068ff?style=for-the-badge&logo=zalo)](https://zalo.me/0366079769)  
-*(Bấm vào link: [https://zalo.me/0366079769](https://zalo.me/0366079769) hoặc nhắn SĐT **`0366079769`**)*
+[![Liên hệ Facebook](https://img.shields.io/badge/Chat%20Facebook%20Admin-Nguy%E1%BB%85n%20Thanh%20Phong-1877f2?style=for-the-badge&logo=facebook)](https://www.facebook.com/nguyen.thanh.phong.786817)  
+*(Bấm vào link: [Zalo 0366079769](https://zalo.me/0366079769) hoặc [Facebook Nguyễn Thanh Phong](https://www.facebook.com/nguyen.thanh.phong.786817))*
 
 ---
 
@@ -109,7 +111,7 @@ Trên các thiết bị của Apple (iPhone / iPad), bạn có 2 cách cực k�
 
 1. Mở menu bot, chọn tab **KEY (◇)** trên thanh điều hướng bên trái.
 2. Tại mục **MÃ MÁY CỦA BẠN (MACHINE ID)**, nhấn nút **📋 Sao chép** (ví dụ mã máy: `VK2Q-XKNA`).
-3. Nhấn nút **💬 Nhắn Zalo Mua Key** hoặc liên hệ Admin qua Zalo: **[https://zalo.me/0366079769](https://zalo.me/0366079769)** (SĐT: **`0366.079.769`**).
+3. Nhấn nút **💬 Nhắn Zalo Mua Key** hoặc **🌐 Nhắn Facebook Admin** (liên hệ Zalo: **[https://zalo.me/0366079769](https://zalo.me/0366079769)** / Facebook: **[https://www.facebook.com/nguyen.thanh.phong.786817](https://www.facebook.com/nguyen.thanh.phong.786817)**).
 4. Gửi mã máy và thông báo gói bạn muốn đăng ký (1 tuần, 1 tháng, 3 tháng, vĩnh viễn) để nhận mã bản quyền.
 5. Quay lại tab **HOME (⌂)**, dán mã bản quyền nhận được vào ô nhập mã và nhấn **Kích hoạt**.
 
@@ -131,7 +133,8 @@ Trên các thiết bị của Apple (iPhone / iPad), bạn có 2 cách cực k�
 
 ## 💬 Thông Tin Hỗ Trợ & Liên Hệ Admin
 
-* **Quản trị viên / Tác giả:** phongnp96 (Vua Cheat)
+* **Quản trị viên / Tác giả:** phongnp96 (Nguyễn Thanh Phong - Vua Cheat)
+* 🌐 **Facebook Cá Nhân:** [https://www.facebook.com/nguyen.thanh.phong.786817](https://www.facebook.com/nguyen.thanh.phong.786817)
 * 📱 **Zalo Hỗ Trợ & Mua Key:** [https://zalo.me/0366079769](https://zalo.me/0366079769)
 * 📞 **Số điện thoại Zalo:** `0366.079.769`
 * 🌐 **GitHub Repository:** [https://github.com/phongnp96/pokesurvivor-bot](https://github.com/phongnp96/pokesurvivor-bot)
